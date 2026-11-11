@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  .dark {
+    color-scheme: dark;
+  }
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    @apply bg-slate-100 font-sans text-slate-900 antialiased dark:bg-ink-950 dark:text-slate-100;
+  }
+  ::selection {
+    @apply bg-gold-400/30;
+  }
+  /* Refined scrollbars */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(148, 163, 184, 0.4) transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: rgba(148, 163, 184, 0.35);
+    border-radius: 9999px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+  }
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(148, 163, 184, 0.6);
+    background-clip: content-box;
+  }
+}
+
+@layer components {
+  .panel {
+    @apply rounded-2xl border border-mocha-green/20 bg-white shadow-soft dark:border-soft-sand/10 dark:bg-ink-900/70;
+  }
+  .panel-muted {
+    @apply rounded-xl border border-mocha-green/15 bg-slate-50 dark:border-soft-sand/[0.08] dark:bg-ink-850/60;
+  }
+  .hairline {
+    @apply border-mocha-green/20 dark:border-soft-sand/10;
+  }
+  .input-base {
+    @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-mocha-green focus:outline-none focus:ring-2 focus:ring-mocha-green/25 dark:border-mocha-green/60 dark:bg-ink-850 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:border-soft-sand/60 dark:focus:ring-soft-sand/20;
+  }
+  .label-base {
+    @apply mb-1.5 block text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400;
+  }
+  .nav-item {
+    @apply flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-white/[0.04] dark:hover:text-slate-100;
+  }
+  .nav-item-active {
+    @apply bg-mocha-green/10 text-mocha-green hover:bg-mocha-green/15 hover:text-mocha-green dark:bg-mocha-green dark:text-soft-sand dark:hover:bg-mocha-green/80 dark:hover:text-soft-sand;
+  }
+  .hero-grid {
+    background-image:
+      linear-gradient(to right, rgba(148, 163, 184, 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+  .markdown > :first-child {
+    margin-top: 0;
+  }
+  .markdown h1,
+  .markdown h2 {
+    @apply mb-1.5 mt-4 font-serif text-base font-semibold text-mocha-green dark:text-soft-sand;
+  }
+  .markdown h3,
+  .markdown h4 {
+    @apply mb-1 mt-3 text-sm font-semibold;
+  }
+  .markdown p {
+    @apply my-1.5;
+  }
+  .markdown ul {
+    @apply my-1.5 list-disc space-y-1 pl-5;
+  }
+  .markdown ol {
+    @apply my-1.5 list-decimal space-y-1 pl-5;
+  }
+  .markdown strong {
+    @apply font-semibold;
+  }
+  .markdown blockquote {
+    @apply my-2 border-l-2 border-mocha-green/40 pl-3 italic text-slate-600 dark:border-soft-sand/40 dark:text-slate-300;
+  }
+  .markdown code {
+    @apply rounded bg-slate-200/70 px-1 py-0.5 text-[0.85em] dark:bg-white/10;
+  }
+  .markdown pre {
+    @apply my-2 overflow-x-auto rounded-lg bg-slate-200/70 p-3 dark:bg-white/10;
+  }
+  .markdown pre code {
+    @apply bg-transparent p-0;
+  }
+  .markdown hr {
+    @apply my-3 border-mocha-green/20 dark:border-mocha-green/60;
+  }
+  .markdown a {
+    @apply text-mocha-green underline dark:text-soft-sand;
+  }
+  .markdown table {
+    @apply my-2 w-full border-collapse text-xs;
+  }
+  .markdown th,
+  .markdown td {
+    @apply border border-mocha-green/25 px-2 py-1 text-left dark:border-mocha-green/60;
+  }
+}
+
+/* Print stylesheet for court-ready draft export */
+@media print {
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-area {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    padding: 24px 32px;
+    background: #fff;
+    color: #000;
+    font-family: 'Lora', Georgia, serif;
+    font-size: 12.5pt;
+    line-height: 1.7;
+    white-space: pre-wrap;
+  }
+}
